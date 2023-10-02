@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            color: #007BFF; /* Blue color for headings */
+            margin-top: 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #007BFF; /* Blue background color for table headers */
+            color: #fff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2; /* Gray background for even rows */
+        }
+
+        td button {
+            padding: 5px 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: #007BFF; /* Blue button */
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+
+        .btn-warning {
+            background-color: #ffc107; /* Yellow button */
+            color: #212529;
+        }
+
+        .btn-warning:hover {
+            background-color: #d39e00; /* Darker yellow on hover */
+        }
+
+        .btn-danger {
+            background-color: #dc3545; /* Red button */
+            color: #fff;
+        }
+
+        .btn-danger:hover {
+            background-color: #c82333; /* Darker red on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>User List works!</p>
+        <h2 class="text-primary">Get all data from API</h2>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>status</th>
+                <th>Action</th>
+            </tr>
+            <tr *ngFor="let user of users">
+                <td>{{ user._id }}</td>
+                <td>{{ user.Title }}</td>
+                <td>{{ user.Description }}</td>
+                <td>{{ user.status }}</td>
+                <td>
+                    <button (click)="userDetails(user._id)" class="btn btn-primary">Details</button>
+                    <button (click)="editDetails(user._id)" class="btn btn-warning me-2 ms-2">Edit</button>
+                    <button (click)="removeUser(user._id)" class="btn btn-danger">Delete</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
